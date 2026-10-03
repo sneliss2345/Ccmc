@@ -70,6 +70,40 @@ def check_states(report, where, palette, block_ids, block_states):
             report.note(where, f"{bid} leaves {sorted(missing)} at default")
 
 
+DIRT_TAG = {"grass_block", "dirt", "coarse_dirt", "podzol", "rooted_dirt", "moss_block", "mud",
+            "muddy_mangrove_roots", "mycelium"}
+SMALL_PLANTS = {"fern", "grass", "poppy", "dandelion", "cornflower", "oxeye_daisy", "azure_bluet", "allium",
+                "lily_of_the_valley", "sweet_berry_bush", "azalea", "flowering_azalea"}
+
+
+def top_supports(s):
+    """Can `s` hold a lantern/candle/pot in the centre of its top face?"""
+    if s is None or is_full_solid(s):
+        return True
+    bid, p = s.id, s.props
+    if bid.endswith(("_fence", "_wall")) or bid in ("chain", "spawner", "iron_bars"):
+        return True
+    if bid.endswith("_slab"):
+        return p.get("type") in ("top", "double")
+    if bid.endswith("_stairs"):
+        return p.get("half") == "top"
+    return False
+
+
+def bottom_supports(s):
+    """Can a lantern hang from the bottom face of `s`?"""
+    if s is None or is_full_solid(s):
+        return True
+    bid, p = s.id, s.props
+    if bid.endswith(("_fence", "_wall")) or bid == "chain":
+        return True
+    if bid.endswith("_slab"):
+        return p.get("type") in ("bottom", "double")
+    if bid.endswith("_stairs"):
+        return p.get("half") == "bottom"
+    return False
+
+
 def check_supports(report, t):
     """Placement sanity: things that would pop off or look broken in game."""
     b = t.blocks
@@ -85,17 +119,27 @@ def check_supports(report, t):
     for (x, y, z), s in b.items():
         bid, p = s.id, s.props
         where = f"{t.name} ({x},{y},{z}) {bid}"
+        below, above = at((x, y - 1, z)), at((x, y + 1, z))
         if bid == "ladder":
             dx, _, dz = offsets[p["facing"]]
             if not solid(x - dx, y, z - dz):
                 report.error(where, "ladder has nothing to hang on")
         elif bid in ("lantern", "soul_lantern"):
             if p.get("hanging") == "true":
-                above = at((x, y + 1, z))
-                if not (solid(x, y + 1, z) or (above and above.id == "chain")):
+                if not bottom_supports(above):
                     report.error(where, "hanging lantern without a block above")
-            elif not solid(x, y - 1, z) and not (at((x, y - 1, z)) and at((x, y - 1, z)).id.endswith("_fence")):
+            elif not top_supports(below):
                 report.error(where, "standing lantern without support")
+        elif bid == "bell" and p.get("attachment") == "ceiling":
+            if not bottom_supports(above):
+                report.error(where, "bell without a ceiling")
+        elif bid == "hanging_roots" and (above is not None and not is_full_solid(above)
+                                         and not above.id.endswith("leaves")):
+            report.error(where, "hanging roots need a block above")
+        elif bid.endswith("_wall_banner") or bid == "wall_torch":
+            dx, _, dz = offsets[p["facing"]]
+            if not solid(x - dx, y, z - dz):
+                report.error(where, "wall decoration attached to nothing")
         elif bid.endswith("_door"):
             other = (x, y + 1, z) if p["half"] == "lower" else (x, y - 1, z)
             o = at(other)
@@ -107,21 +151,23 @@ def check_supports(report, t):
             o = at(other)
             if not o or o.id != bid or o.props["part"] == p["part"]:
                 report.error(where, "bed part without its partner")
-        elif bid == "vine":
+        elif bid in ("vine", "glow_lichen"):
             for side in ("north", "south", "east", "west"):
                 if p.get(side) == "true":
                     dx, _, dz = offsets[side]
                     if not solid(x + dx, y, z + dz):
-                        report.error(where, f"vine attached to air on its {side} side")
-        elif bid in ("candle", "flower_pot", "brewing_stand", "campfire", "dead_bush", "fern", "grass",
-                     "moss_carpet", "brown_carpet", "skeleton_skull", "spruce_pressure_plate") \
-                or bid.startswith("potted_") or bid.endswith("_carpet"):
-            below = at((x, y - 1, z))
-            ok = solid(x, y - 1, z) or (below is not None and (below.id.endswith("_fence") or below.id == "spawner"))
-            if not ok:
+                        report.error(where, f"attached to air on its {side} side")
+        elif bid.endswith("_carpet"):
+            if below is not None and below.id == "air":
+                report.error(where, "carpet over air")
+        elif bid in SMALL_PLANTS or bid == "dead_bush":
+            soil = DIRT_TAG | ({"sand", "red_sand", "terracotta"} if bid == "dead_bush" else set())
+            if below is not None and below.id not in soil:
+                report.error(where, f"cannot grow on {below.id}")
+        elif bid in ("candle", "flower_pot", "brewing_stand", "skeleton_skull", "decorated_pot") \
+                or bid.startswith("potted_") or bid.endswith("_pressure_plate") or bid.endswith("_banner"):
+            if not top_supports(below):
                 report.error(where, "needs a block underneath")
-        if bid in ("dead_bush",) and at((x, y - 1, z)) and at((x, y - 1, z)).id not in ("sand", "red_sand", "terracotta"):
-            report.error(where, "dead bush must stand on sand")
         if bid in ("chest", "trapped_chest"):
             for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 n = at((x + dx, y, z + dz))

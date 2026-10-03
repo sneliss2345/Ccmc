@@ -82,6 +82,8 @@ _NON_FULL = {
     "lily_pad", "hanging_roots", "large_fern", "brown_mushroom", "red_mushroom", "end_rod",
     "lilac", "rose_bush", "peony", "oxeye_daisy", "cornflower", "allium", "azure_bluet",
     "lantern", "soul_lantern", "mangrove_roots", "skeleton_skull", "skeleton_wall_skull",
+    "bell", "lightning_rod", "decorated_pot", "glow_lichen", "lily_of_the_valley", "sea_pickle",
+    "carrots", "wheat", "potatoes", "beetroots", "pumpkin_stem", "melon_stem",
 }
 
 
