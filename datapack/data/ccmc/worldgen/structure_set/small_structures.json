@@ -1,0 +1,34 @@
+{
+  "structures": [
+    {
+      "structure": "ccmc:wayside_shrine",
+      "weight": 1
+    },
+    {
+      "structure": "ccmc:hunter_cabin",
+      "weight": 1
+    },
+    {
+      "structure": "ccmc:desert_ruin",
+      "weight": 1
+    },
+    {
+      "structure": "ccmc:swamp_hut",
+      "weight": 1
+    },
+    {
+      "structure": "ccmc:overgrown_ruin",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 18,
+    "separation": 6,
+    "salt": 1846032257,
+    "exclusion_zone": {
+      "other_set": "minecraft:villages",
+      "chunk_count": 4
+    }
+  }
+}

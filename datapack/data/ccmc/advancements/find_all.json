@@ -1,0 +1,173 @@
+{
+  "parent": "ccmc:find_crypt",
+  "display": {
+    "icon": {
+      "item": "minecraft:compass"
+    },
+    "title": "Великий исследователь",
+    "description": "Найдите все 8 новых построек",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "wayside_shrine": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:wayside_shrine"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "hunter_cabin": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:hunter_cabin"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "desert_ruin": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:desert_ruin"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "swamp_hut": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:swamp_hut"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "overgrown_ruin": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:overgrown_ruin"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "watchtower": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:watchtower"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "abandoned_fort": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:abandoned_fort"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "crypt": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:crypt"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wayside_shrine"
+    ],
+    [
+      "hunter_cabin"
+    ],
+    [
+      "desert_ruin"
+    ],
+    [
+      "swamp_hut"
+    ],
+    [
+      "overgrown_ruin"
+    ],
+    [
+      "watchtower"
+    ],
+    [
+      "abandoned_fort"
+    ],
+    [
+      "crypt"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

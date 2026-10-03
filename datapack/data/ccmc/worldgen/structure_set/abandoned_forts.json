@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "ccmc:abandoned_fort",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 46,
+    "separation": 16,
+    "salt": 1517265883,
+    "exclusion_zone": {
+      "other_set": "minecraft:villages",
+      "chunk_count": 8
+    }
+  }
+}

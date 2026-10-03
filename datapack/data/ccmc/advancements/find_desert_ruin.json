@@ -1,0 +1,32 @@
+{
+  "parent": "ccmc:root",
+  "display": {
+    "icon": {
+      "item": "minecraft:chiseled_sandstone"
+    },
+    "title": "Пески времени",
+    "description": "Найдите полузасыпанные руины в пустыне",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:desert_ruin"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

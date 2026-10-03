@@ -1,0 +1,32 @@
+{
+  "parent": "ccmc:root",
+  "display": {
+    "icon": {
+      "item": "minecraft:mossy_cobblestone"
+    },
+    "title": "Заросшее прошлое",
+    "description": "Найдите заросшие руины в лесу",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "found": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "ccmc:overgrown_ruin"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
