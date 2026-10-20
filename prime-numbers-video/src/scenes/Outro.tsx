@@ -1,3 +1,4 @@
+import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
@@ -5,6 +6,8 @@ import {
   interpolate,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import "../fonts";
 
@@ -49,13 +52,13 @@ const OutroInner = () => {
           lineHeight: 1.15,
           color: "#ffffff",
           marginTop: 72,
-          opacity: interpolate(frame, [0.8 * fps, 1.5 * fps], [0, 1], {
+          opacity: interpolate(frame, [1.2 * fps, 1.9 * fps], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
           translate: interpolate(
             frame,
-            [0.8 * fps, 1.6 * fps],
+            [1.2 * fps, 2 * fps],
             ["0px 40px", "0px 0px"],
             {
               extrapolateLeft: "clamp",
@@ -76,13 +79,13 @@ const OutroInner = () => {
           lineHeight: 1.15,
           color: "#f5c542",
           marginTop: 12,
-          opacity: interpolate(frame, [1.8 * fps, 2.5 * fps], [0, 1], {
+          opacity: interpolate(frame, [3.4 * fps, 4.1 * fps], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
           translate: interpolate(
             frame,
-            [1.8 * fps, 2.6 * fps],
+            [3.4 * fps, 4.2 * fps],
             ["0px 40px", "0px 0px"],
             {
               extrapolateLeft: "clamp",
@@ -105,6 +108,13 @@ const OutroInner = () => {
           ),
         }}
       />
+      <Track name="Voiceover">
+        <Audio
+          name="Финал"
+          src={staticFile("voiceover/outro-1.mp3")}
+          from={1.2 * fps}
+        />
+      </Track>
     </>
   );
 };

@@ -1,7 +1,7 @@
 # Простые числа — видео на Remotion
 
-Ролик ~74 секунды (1920×1080, 30 fps) о теории простых чисел. Композиция `PrimesVideo`
-собрана из 9 сцен, соединённых плавными переходами:
+Ролик ~3 минуты (1920×1080, 30 fps) о теории простых чисел с русской озвучкой.
+Композиция `PrimesVideo` собрана из 9 сцен, соединённых плавными переходами:
 
 1. **Intro** — «Простые числа. Атомы арифметики»
 2. **Definition** — определение, примеры простых и составных чисел
@@ -15,6 +15,26 @@
 
 Каждая сцена зарегистрирована отдельной композицией в папке `Scenes`, поэтому
 в Remotion Studio её можно открыть и редактировать отдельно.
+
+## Озвучка
+
+Текст озвучки лежит в `scripts/narration.json`, готовые фразы — в `public/voiceover/`.
+Каждая сцена проигрывает свои фразы на дорожке «Voiceover», а появление элементов
+на экране привязано к моменту, когда о них говорят.
+
+Фразы синтезированы офлайн голосом Piper `ru_RU-irina-medium` через sherpa-onnx,
+без API-ключей. Чтобы пересоздать их после правки текста:
+
+```console
+pip install sherpa-onnx soundfile
+curl -LO https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-ru_RU-irina-medium.tar.bz2
+tar xjf vits-piper-ru_RU-irina-medium.tar.bz2
+python scripts/generate_voiceover.py --model-dir vits-piper-ru_RU-irina-medium
+```
+
+Скрипт печатает длительность каждой фразы. Если она заметно изменилась, поправьте
+`from` у фразы и связанных с ней элементов в сцене и длительность сцены в
+`src/PrimesVideo.tsx` и `src/Root.tsx`.
 
 ## Commands
 

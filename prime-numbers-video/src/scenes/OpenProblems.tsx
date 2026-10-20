@@ -1,9 +1,12 @@
+import { Audio } from "@remotion/media";
 import {
   Easing,
   Interactive,
   interpolate,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import { ProblemCard } from "../components/ProblemCard";
 import "../fonts";
@@ -68,7 +71,7 @@ const OpenProblemsInner = () => {
       >
         <ProblemCard
           name="Riemann hypothesis"
-          from={1.4 * fps}
+          from={3.8 * fps}
           title="Гипотеза Римана"
           formula="Re s = ½"
           style={{ backgroundColor: "#151c33" }}
@@ -77,7 +80,7 @@ const OpenProblemsInner = () => {
         </ProblemCard>
         <ProblemCard
           name="Twin primes"
-          from={3 * fps}
+          from={10.4 * fps}
           title="Простые-близнецы"
           formula="p, p + 2"
           style={{ backgroundColor: "#151c33" }}
@@ -86,7 +89,7 @@ const OpenProblemsInner = () => {
         </ProblemCard>
         <ProblemCard
           name="Goldbach conjecture"
-          from={4.6 * fps}
+          from={16.4 * fps}
           title="Гипотеза Гольдбаха"
           formula="28 = 5 + 23"
           style={{ backgroundColor: "#151c33" }}
@@ -94,6 +97,28 @@ const OpenProblemsInner = () => {
           Всякое чётное число больше 2 — сумма двух простых?
         </ProblemCard>
       </div>
+      <Track name="Voiceover">
+        <Audio
+          name="Много тайн"
+          src={staticFile("voiceover/open-problems-1.mp3")}
+          from={0.6 * fps}
+        />
+        <Audio
+          name="Гипотеза Римана"
+          src={staticFile("voiceover/open-problems-2.mp3")}
+          from={3.8 * fps}
+        />
+        <Audio
+          name="Простые-близнецы"
+          src={staticFile("voiceover/open-problems-3.mp3")}
+          from={10.4 * fps}
+        />
+        <Audio
+          name="Гипотеза Гольдбаха"
+          src={staticFile("voiceover/open-problems-4.mp3")}
+          from={16.4 * fps}
+        />
+      </Track>
     </>
   );
 };

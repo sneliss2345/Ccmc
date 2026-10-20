@@ -11,6 +11,7 @@
   "dependencies": {
     "@remotion/cli": "4.0.537",
     "@remotion/google-fonts": "4.0.537",
+    "@remotion/media": "4.0.537",
     "@remotion/transitions": "4.0.537",
     "react": "19.2.3",
     "react-dom": "19.2.3",

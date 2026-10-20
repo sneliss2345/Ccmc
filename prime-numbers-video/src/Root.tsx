@@ -21,7 +21,7 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
         fps={30}
-        durationInFrames={2220}
+        durationInFrames={5640}
       />
       <Folder name="Scenes">
         <Composition
@@ -30,7 +30,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={180}
+          durationInFrames={225}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -46,7 +46,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={210}
+          durationInFrames={555}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -63,7 +63,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={360}
+          durationInFrames={1080}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -80,7 +80,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={240}
+          durationInFrames={615}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -96,7 +96,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={360}
+          durationInFrames={870}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -113,7 +113,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={270}
+          durationInFrames={810}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -130,7 +130,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={240}
+          durationInFrames={675}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -147,7 +147,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={300}
+          durationInFrames={705}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",
@@ -163,7 +163,7 @@ export const RemotionRoot: React.FC = () => {
           width={1920}
           height={1080}
           fps={30}
-          durationInFrames={180}
+          durationInFrames={225}
           defaultProps={{
             style: {
               backgroundColor: "#0b1020",

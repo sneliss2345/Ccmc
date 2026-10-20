@@ -1,9 +1,12 @@
+import { Audio } from "@remotion/media";
 import {
   Easing,
   Interactive,
   interpolate,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import { Chip } from "../components/Chip";
 import "../fonts";
@@ -70,7 +73,7 @@ const DefinitionInner = () => {
       >
         <Interactive.Div
           name="Primes label"
-          from={1.6 * fps}
+          from={7.4 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 600,
@@ -83,7 +86,7 @@ const DefinitionInner = () => {
         </Interactive.Div>
         <Chip
           name="2"
-          from={1.8 * fps}
+          from={7.5 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
@@ -96,7 +99,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="3"
-          from={2.05 * fps}
+          from={8 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
@@ -109,7 +112,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="5"
-          from={2.3 * fps}
+          from={8.5 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
@@ -122,7 +125,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="7"
-          from={2.55 * fps}
+          from={9 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
@@ -135,7 +138,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="11"
-          from={2.8 * fps}
+          from={9.55 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
@@ -148,7 +151,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="13"
-          from={3.05 * fps}
+          from={10.2 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
@@ -171,7 +174,7 @@ const DefinitionInner = () => {
       >
         <Interactive.Div
           name="Composites label"
-          from={4 * fps}
+          from={12 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 600,
@@ -184,7 +187,7 @@ const DefinitionInner = () => {
         </Interactive.Div>
         <Chip
           name="6 = 2 · 3"
-          from={4.2 * fps}
+          from={12.3 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 500,
@@ -197,7 +200,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="9 = 3 · 3"
-          from={4.6 * fps}
+          from={12.85 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 500,
@@ -210,7 +213,7 @@ const DefinitionInner = () => {
         </Chip>
         <Chip
           name="12 = 3 · 4"
-          from={5 * fps}
+          from={13.4 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 500,
@@ -222,6 +225,23 @@ const DefinitionInner = () => {
           12 = 3 · 4
         </Chip>
       </div>
+      <Track name="Voiceover">
+        <Audio
+          name="Определение"
+          src={staticFile("voiceover/definition-1.mp3")}
+          from={0.6 * fps}
+        />
+        <Audio
+          name="Примеры простых"
+          src={staticFile("voiceover/definition-2.mp3")}
+          from={7.5 * fps}
+        />
+        <Audio
+          name="Составные"
+          src={staticFile("voiceover/definition-3.mp3")}
+          from={12 * fps}
+        />
+      </Track>
     </>
   );
 };

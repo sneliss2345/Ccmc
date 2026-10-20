@@ -1,3 +1,4 @@
+import { Audio } from "@remotion/media";
 import {
   AbsoluteFill,
   Easing,
@@ -6,6 +7,8 @@ import {
   random,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import "../fonts";
 
@@ -109,13 +112,13 @@ const IntroInner = () => {
           fontSize: 64,
           color: "#9aa4c7",
           marginTop: 32,
-          opacity: interpolate(frame, [1.4 * fps, 2.2 * fps], [0, 1], {
+          opacity: interpolate(frame, [2.1 * fps, 2.9 * fps], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
           translate: interpolate(
             frame,
-            [1.4 * fps, 2.2 * fps],
+            [2.1 * fps, 2.9 * fps],
             ["0px 30px", "0px 0px"],
             {
               extrapolateLeft: "clamp",
@@ -127,6 +130,18 @@ const IntroInner = () => {
       >
         Атомы арифметики
       </Interactive.Div>
+      <Track name="Voiceover">
+        <Audio
+          name="Простые числа"
+          src={staticFile("voiceover/intro-1.mp3")}
+          from={0.6 * fps}
+        />
+        <Audio
+          name="Атомы арифметики"
+          src={staticFile("voiceover/intro-2.mp3")}
+          from={2.1 * fps}
+        />
+      </Track>
     </>
   );
 };

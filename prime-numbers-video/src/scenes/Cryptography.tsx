@@ -1,9 +1,12 @@
+import { Audio } from "@remotion/media";
 import {
   Easing,
   Interactive,
   interpolate,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import { Chip } from "../components/Chip";
 import "../fonts";
@@ -70,14 +73,14 @@ const CryptographyInner = () => {
       >
         <Interactive.Div
           name="Multiply"
-          from={1.8 * fps}
+          from={4.6 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
             fontSize: 84,
             color: "#ffffff",
             width: 820,
-            opacity: interpolate(frame, [1.8 * fps, 2.3 * fps], [0, 1], {
+            opacity: interpolate(frame, [4.6 * fps, 5.1 * fps], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -88,7 +91,7 @@ const CryptographyInner = () => {
         </Interactive.Div>
         <Chip
           name="Easy"
-          from={2.6 * fps}
+          from={7.9 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 700,
@@ -111,14 +114,14 @@ const CryptographyInner = () => {
       >
         <Interactive.Div
           name="Factor"
-          from={3.6 * fps}
+          from={11.3 * fps}
           style={{
             fontFamily: "JetBrains Mono",
             fontWeight: 700,
             fontSize: 84,
             color: "#ffffff",
             width: 820,
-            opacity: interpolate(frame, [3.6 * fps, 4.1 * fps], [0, 1], {
+            opacity: interpolate(frame, [11.3 * fps, 11.8 * fps], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -129,7 +132,7 @@ const CryptographyInner = () => {
         </Interactive.Div>
         <Chip
           name="Hard"
-          from={4.4 * fps}
+          from={14.6 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 700,
@@ -143,7 +146,7 @@ const CryptographyInner = () => {
       </div>
       <Interactive.Div
         name="RSA"
-        from={5.6 * fps}
+        from={16.2 * fps}
         style={{
           fontFamily: "Inter",
           fontWeight: 500,
@@ -152,7 +155,7 @@ const CryptographyInner = () => {
           color: "#9aa4c7",
           marginTop: 72,
           maxWidth: 1500,
-          opacity: interpolate(frame, [5.6 * fps, 6.2 * fps], [0, 1], {
+          opacity: interpolate(frame, [16.2 * fps, 16.8 * fps], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
@@ -160,6 +163,28 @@ const CryptographyInner = () => {
       >
         На этом стоит шифрование RSA — только простые там из сотен цифр
       </Interactive.Div>
+      <Track name="Voiceover">
+        <Audio
+          name="Зачем это нужно"
+          src={staticFile("voiceover/cryptography-1.mp3")}
+          from={0.6 * fps}
+        />
+        <Audio
+          name="Умножить легко"
+          src={staticFile("voiceover/cryptography-2.mp3")}
+          from={4.6 * fps}
+        />
+        <Audio
+          name="Разложить трудно"
+          src={staticFile("voiceover/cryptography-3.mp3")}
+          from={11.3 * fps}
+        />
+        <Audio
+          name="RSA"
+          src={staticFile("voiceover/cryptography-4.mp3")}
+          from={16.2 * fps}
+        />
+      </Track>
     </>
   );
 };

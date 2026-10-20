@@ -11,13 +11,14 @@ import { OpenProblems } from "./scenes/OpenProblems";
 import { Outro } from "./scenes/Outro";
 import { Sieve } from "./scenes/Sieve";
 
-// 9 scenes totalling 78 s, minus 8 fades of 15 frames: 2220 frames at 30 fps.
+// 9 scenes totalling 192 s, minus 8 fades of 15 frames: 5640 frames at 30 fps.
+// Scene lengths follow the voiceover; see scripts/narration.json.
 export const PrimesVideo = () => {
   const { fps } = useVideoConfig();
 
   return (
     <TransitionSeries>
-      <TransitionSeries.Sequence name="Intro" durationInFrames={6 * fps}>
+      <TransitionSeries.Sequence name="Intro" durationInFrames={7.5 * fps}>
         <Intro
           style={{
             backgroundColor: "#0b1020",
@@ -31,7 +32,10 @@ export const PrimesVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Definition" durationInFrames={7 * fps}>
+      <TransitionSeries.Sequence
+        name="Definition"
+        durationInFrames={18.5 * fps}
+      >
         <Definition
           style={{
             backgroundColor: "#0b1020",
@@ -46,7 +50,7 @@ export const PrimesVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Sieve" durationInFrames={12 * fps}>
+      <TransitionSeries.Sequence name="Sieve" durationInFrames={36 * fps}>
         <Sieve
           style={{
             backgroundColor: "#0b1020",
@@ -63,7 +67,7 @@ export const PrimesVideo = () => {
       />
       <TransitionSeries.Sequence
         name="Factorization"
-        durationInFrames={8 * fps}
+        durationInFrames={20.5 * fps}
       >
         <Factorization
           style={{
@@ -78,7 +82,7 @@ export const PrimesVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Euclid" durationInFrames={12 * fps}>
+      <TransitionSeries.Sequence name="Euclid" durationInFrames={29 * fps}>
         <Euclid
           style={{
             backgroundColor: "#0b1020",
@@ -93,7 +97,10 @@ export const PrimesVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Distribution" durationInFrames={9 * fps}>
+      <TransitionSeries.Sequence
+        name="Distribution"
+        durationInFrames={27 * fps}
+      >
         <Distribution
           style={{
             backgroundColor: "#0b1020",
@@ -108,7 +115,10 @@ export const PrimesVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Cryptography" durationInFrames={8 * fps}>
+      <TransitionSeries.Sequence
+        name="Cryptography"
+        durationInFrames={22.5 * fps}
+      >
         <Cryptography
           style={{
             backgroundColor: "#0b1020",
@@ -125,7 +135,7 @@ export const PrimesVideo = () => {
       />
       <TransitionSeries.Sequence
         name="Open problems"
-        durationInFrames={10 * fps}
+        durationInFrames={23.5 * fps}
       >
         <OpenProblems
           style={{
@@ -140,7 +150,7 @@ export const PrimesVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Outro" durationInFrames={6 * fps}>
+      <TransitionSeries.Sequence name="Outro" durationInFrames={7.5 * fps}>
         <Outro
           style={{
             backgroundColor: "#0b1020",

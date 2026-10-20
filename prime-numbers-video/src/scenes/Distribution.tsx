@@ -1,9 +1,12 @@
+import { Audio } from "@remotion/media";
 import {
   Easing,
   Interactive,
   interpolate,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import "../fonts";
 import { isPrime, smallestPrimeFactors } from "../primes";
@@ -50,12 +53,12 @@ const Chart = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const reveal = interpolate(frame, [1.4 * fps, 5.4 * fps], [0, 1], {
+  const reveal = interpolate(frame, [4.9 * fps, 13.6 * fps], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.inOut(Easing.cubic),
   });
-  const axesIn = interpolate(frame, [0.8 * fps, 1.4 * fps], [0, 1], {
+  const axesIn = interpolate(frame, [4.3 * fps, 4.9 * fps], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -204,7 +207,7 @@ const DistributionInner = () => {
         >
           <Interactive.Div
             name="Legend: π(x)"
-            from={1.4 * fps}
+            from={4.9 * fps}
             style={{
               fontFamily: "Inter",
               fontWeight: 500,
@@ -213,7 +216,7 @@ const DistributionInner = () => {
               color: "#9aa4c7",
               borderLeft: "8px solid #f5c542",
               paddingLeft: 28,
-              opacity: interpolate(frame, [1.4 * fps, 2 * fps], [0, 1], {
+              opacity: interpolate(frame, [4.9 * fps, 5.5 * fps], [0, 1], {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
               }),
@@ -234,7 +237,7 @@ const DistributionInner = () => {
           </Interactive.Div>
           <Interactive.Div
             name="Legend: x / ln x"
-            from={2.4 * fps}
+            from={9.6 * fps}
             style={{
               fontFamily: "Inter",
               fontWeight: 500,
@@ -243,7 +246,7 @@ const DistributionInner = () => {
               color: "#9aa4c7",
               borderLeft: "8px dashed #5ac8fa",
               paddingLeft: 28,
-              opacity: interpolate(frame, [2.4 * fps, 3 * fps], [0, 1], {
+              opacity: interpolate(frame, [9.6 * fps, 10.2 * fps], [0, 1], {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
               }),
@@ -264,14 +267,14 @@ const DistributionInner = () => {
           </Interactive.Div>
           <Interactive.Div
             name="Values at 1000"
-            from={5.6 * fps}
+            from={20.3 * fps}
             style={{
               fontFamily: "JetBrains Mono",
               fontWeight: 700,
               fontSize: 48,
               lineHeight: 1.4,
               color: "#ffffff",
-              opacity: interpolate(frame, [5.6 * fps, 6.2 * fps], [0, 1], {
+              opacity: interpolate(frame, [20.3 * fps, 20.9 * fps], [0, 1], {
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
               }),
@@ -283,6 +286,33 @@ const DistributionInner = () => {
           </Interactive.Div>
         </div>
       </div>
+      <Track name="Voiceover">
+        <Audio
+          name="Чем дальше"
+          src={staticFile("voiceover/distribution-1.mp3")}
+          from={0.6 * fps}
+        />
+        <Audio
+          name="Пи от икс"
+          src={staticFile("voiceover/distribution-2.mp3")}
+          from={4.9 * fps}
+        />
+        <Audio
+          name="Оценка Гаусса"
+          src={staticFile("voiceover/distribution-3.mp3")}
+          from={9.6 * fps}
+        />
+        <Audio
+          name="1896"
+          src={staticFile("voiceover/distribution-4.mp3")}
+          from={14.5 * fps}
+        />
+        <Audio
+          name="168 и 145"
+          src={staticFile("voiceover/distribution-5.mp3")}
+          from={20.3 * fps}
+        />
+      </Track>
     </>
   );
 };

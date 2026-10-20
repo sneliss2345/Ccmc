@@ -1,9 +1,12 @@
+import { Audio } from "@remotion/media";
 import {
   Easing,
   Interactive,
   interpolate,
   useCurrentFrame,
   useVideoConfig,
+  staticFile,
+  Track,
 } from "remotion";
 import "../fonts";
 
@@ -68,13 +71,13 @@ const EuclidInner = () => {
       >
         <Interactive.Div
           name="Proof: assume"
-          from={1.4 * fps}
+          from={5.4 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 500,
             fontSize: 58,
             color: "#e6e9f5",
-            opacity: interpolate(frame, [1.4 * fps, 1.9 * fps], [0, 1], {
+            opacity: interpolate(frame, [5.4 * fps, 5.9 * fps], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -85,13 +88,13 @@ const EuclidInner = () => {
         </Interactive.Div>
         <Interactive.Div
           name="Proof: construct"
-          from={3 * fps}
+          from={8.8 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 500,
             fontSize: 58,
             color: "#e6e9f5",
-            opacity: interpolate(frame, [3 * fps, 3.5 * fps], [0, 1], {
+            opacity: interpolate(frame, [8.8 * fps, 9.3 * fps], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -102,13 +105,13 @@ const EuclidInner = () => {
         </Interactive.Div>
         <Interactive.Div
           name="Proof: remainder"
-          from={4.6 * fps}
+          from={11.6 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 500,
             fontSize: 58,
             color: "#e6e9f5",
-            opacity: interpolate(frame, [4.6 * fps, 5.1 * fps], [0, 1], {
+            opacity: interpolate(frame, [11.6 * fps, 12.1 * fps], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -119,13 +122,13 @@ const EuclidInner = () => {
         </Interactive.Div>
         <Interactive.Div
           name="Proof: contradiction"
-          from={6.2 * fps}
+          from={16.7 * fps}
           style={{
             fontFamily: "Inter",
             fontWeight: 500,
             fontSize: 58,
             color: "#e6e9f5",
-            opacity: interpolate(frame, [6.2 * fps, 6.7 * fps], [0, 1], {
+            opacity: interpolate(frame, [16.7 * fps, 17.2 * fps], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),
@@ -140,7 +143,7 @@ const EuclidInner = () => {
       </div>
       <Interactive.Div
         name="Examples"
-        from={8.2 * fps}
+        from={22.1 * fps}
         style={{
           fontFamily: "JetBrains Mono",
           fontWeight: 500,
@@ -152,13 +155,13 @@ const EuclidInner = () => {
           borderRadius: 28,
           padding: "24px 44px",
           marginTop: 24,
-          opacity: interpolate(frame, [8.2 * fps, 8.8 * fps], [0, 1], {
+          opacity: interpolate(frame, [22.1 * fps, 22.7 * fps], [0, 1], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           }),
           translate: interpolate(
             frame,
-            [8.2 * fps, 9 * fps],
+            [22.1 * fps, 22.9 * fps],
             ["0px 40px", "0px 0px"],
             {
               extrapolateLeft: "clamp",
@@ -174,6 +177,38 @@ const EuclidInner = () => {
         2·3·5·7·11·13 + 1 = <span style={{ color: "#f5c542" }}>59 · 509</span>
         <span style={{ color: "#9aa4c7" }}> — новые простые</span>
       </Interactive.Div>
+      <Track name="Voiceover">
+        <Audio
+          name="Евклид"
+          src={staticFile("voiceover/euclid-1.mp3")}
+          from={0.6 * fps}
+        />
+        <Audio
+          name="Допустим"
+          src={staticFile("voiceover/euclid-2.mp3")}
+          from={5.4 * fps}
+        />
+        <Audio
+          name="Перемножим"
+          src={staticFile("voiceover/euclid-3.mp3")}
+          from={8.8 * fps}
+        />
+        <Audio
+          name="Остаток один"
+          src={staticFile("voiceover/euclid-4.mp3")}
+          from={11.6 * fps}
+        />
+        <Audio
+          name="Противоречие"
+          src={staticFile("voiceover/euclid-5.mp3")}
+          from={16.7 * fps}
+        />
+        <Audio
+          name="Проверка"
+          src={staticFile("voiceover/euclid-6.mp3")}
+          from={22.1 * fps}
+        />
+      </Track>
     </>
   );
 };
