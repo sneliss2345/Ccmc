@@ -106,36 +106,59 @@ def explicit_formula(zero_ts: list[float]) -> None:
 
 
 def domain_coloring() -> None:
-    """Hue = arg ζ(s), brightness falls to black at the zeros. Re s in [-5, 3], Im s in [-2, 36]."""
+    """Hue = arg ζ(s); brightness rises with |ζ| in log-spaced rings and falls to black at the zeros.
+
+    Covers Re s in [-5, 3] and Im s in [-2, 36]. The ζ values are cached next to this script
+    so the colouring can be restyled without recomputing them.
+    """
     width, height = 400, 500
     re_min, re_max, im_min, im_max = -5.0, 3.0, -2.0, 36.0
-    img = np.zeros((height, width, 3), dtype=np.uint8)
-    for j in range(height):
-        im = im_max - (im_max - im_min) * (j + 0.5) / height
-        for i in range(width):
-            re = re_min + (re_max - re_min) * (i + 0.5) / width
-            s = mp.mpc(re, im)
-            if abs(s - 1) < 1e-9:
-                v = mp.mpc(1e9, 0)
-            else:
-                v = mp.zeta(s)
-            mod = float(abs(v))
-            hue = (float(mp.arg(v)) / (2 * math.pi)) % 1.0
-            value = (2 / math.pi) * math.atan(mod) ** 0.6
-            # Darker, less saturated than full HSV so text stays readable on top.
-            h6 = hue * 6
-            c = value * 0.75
-            x = c * (1 - abs(h6 % 2 - 1))
-            r, g, b = [(c, x, 0), (x, c, 0), (0, c, x), (0, x, c), (x, 0, c), (c, 0, x)][int(h6) % 6]
-            m = value * 0.12
-            img[j, i] = [int(255 * min(1, r + m)), int(255 * min(1, g + m)), int(255 * min(1, b + m))]
+    cache = pathlib.Path(__file__).with_name(".zeta-grid.npy")
+    if cache.exists():
+        grid = np.load(cache)
+    else:
+        grid = np.zeros((height, width), dtype=np.complex128)
+        for j in range(height):
+            im = im_max - (im_max - im_min) * (j + 0.5) / height
+            for i in range(width):
+                re = re_min + (re_max - re_min) * (i + 0.5) / width
+                grid[j, i] = complex(mp.zeta(mp.mpc(re, im)))
+        np.save(cache, grid)
+
+    mod = np.abs(grid)
+    hue = (np.angle(grid) / (2 * np.pi)) % 1.0
+    log_mod = np.log2(np.maximum(mod, 1e-12))
+    rings = 0.72 + 0.28 * (log_mod - np.floor(log_mod))
+    value = (2 / np.pi) * np.arctan(mod**0.25) * rings
+    saturation = 0.62
+
+    h6 = hue * 6
+    sector = np.floor(h6).astype(int) % 6
+    f = h6 - np.floor(h6)
+    p = value * (1 - saturation)
+    q = value * (1 - saturation * f)
+    t = value * (1 - saturation * (1 - f))
+    rgb = np.zeros((height, width, 3))
+    for k, (r, g, b) in enumerate(
+        [(value, t, p), (q, value, p), (p, value, t), (p, q, value), (t, p, value), (value, p, q)]
+    ):
+        mask = sector == k
+        rgb[mask, 0], rgb[mask, 1], rgb[mask, 2] = r[mask], g[mask], b[mask]
+
     PUBLIC.mkdir(parents=True, exist_ok=True)
-    Image.fromarray(img).resize((800, 1000), Image.LANCZOS).save(PUBLIC / "zeta-domain.png")
+    image = Image.fromarray((np.clip(rgb, 0, 1) * 255).astype(np.uint8))
+    image.resize((800, 1000), Image.LANCZOS).save(PUBLIC / "zeta-domain.png")
     print("wrote zeta-domain.png")
 
 
 if __name__ == "__main__":
-    ts = zeros()
-    critical_line()
-    explicit_formula(ts)
-    domain_coloring()
+    import sys
+
+    # `python compute_data.py domain` restyles only the domain colouring.
+    if sys.argv[1:] == ["domain"]:
+        domain_coloring()
+    else:
+        ts = zeros()
+        critical_line()
+        explicit_formula(ts)
+        domain_coloring()
