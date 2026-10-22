@@ -22,8 +22,21 @@
 Каждая сцена проигрывает свои фразы на дорожке «Voiceover», а появление элементов
 на экране привязано к моменту, когда о них говорят.
 
-Фразы синтезированы офлайн голосом Piper `ru_RU-irina-medium` через sherpa-onnx,
-без API-ключей. Чтобы пересоздать их после правки текста:
+Фразы озвучены ElevenLabs (голос Matilda `XrExE9yKIg1WjnnlVkGX`, модель
+`eleven_multilingual_v2`) скриптом `scripts/generate_voiceover_elevenlabs.py`. Он подгоняет
+каждую новую фразу под длину прежней, так что тайминги сцен не меняются, а в
+`scripts/elevenlabs-report.json` записывает, насколько фразу пришлось ускорить или замедлить.
+Если фраза растянута сильно, её лучше перегенерировать с `--speed`, чтобы голос сам говорил
+быстрее или медленнее:
+
+```console
+export ELEVENLABS_API_KEY=...
+python scripts/generate_voiceover_elevenlabs.py --voice-id XrExE9yKIg1WjnnlVkGX
+python scripts/generate_voiceover_elevenlabs.py --voice-id XrExE9yKIg1WjnnlVkGX --only definition-2 --speed 1.2
+```
+
+Тайминги заданы офлайн-голосом Piper `ru_RU-irina-medium` (sherpa-onnx, без API-ключей).
+После правки текста сначала пересоздайте фразы им, затем переозвучьте ElevenLabs:
 
 ```console
 pip install sherpa-onnx soundfile
@@ -32,7 +45,7 @@ tar xjf vits-piper-ru_RU-irina-medium.tar.bz2
 python scripts/generate_voiceover.py --model-dir vits-piper-ru_RU-irina-medium
 ```
 
-Скрипт печатает длительность каждой фразы. Если она заметно изменилась, поправьте
+Скрипт Piper печатает длительность каждой фразы. Если она заметно изменилась, поправьте
 `from` у фразы и связанных с ней элементов в сцене и длительность сцены в
 `src/PrimesVideo.tsx` и `src/Root.tsx`.
 

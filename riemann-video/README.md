@@ -10,7 +10,10 @@
   явная формула для π(x), цветная карта ζ(s) (`public/zeta-domain.png`).
 - `scripts/narration.json` — текст озвучки (ударения отмечены знаком U+0301, сложные слова —
   фонемами в `[[ ]]`); `scripts/generate_voiceover.py` синтезирует его офлайн голосом Piper
-  `ru_RU-irina-medium` через `piper-tts` в `public/voiceover/`.
+  `ru_RU-irina-medium` через `piper-tts` в `public/voiceover/` и этим задаёт тайминги сцен.
+- `scripts/generate_voiceover_elevenlabs.py` переозвучивает фразы ElevenLabs, подгоняя каждую под
+  длину прежней; в `public/voiceover/` сейчас голос Matilda (`XrExE9yKIg1WjnnlVkGX`,
+  `eleven_multilingual_v2`), растяжение по фразам — в `scripts/elevenlabs-report.json`.
 - `src/components/Tex.tsx` — формулы KaTeX.
 
 ## Commands
