@@ -2,12 +2,15 @@
 
 The scenes place each clip and its on-screen cues at fixed times, so each new clip is
 time-stretched (ffmpeg atempo) to the length of the clip it replaces. The animations
-then stay in sync without touching the scene code. Lines whose natural length differs
-by more than 15 % are reported, since stronger stretching starts to sound unnatural.
+then stay in sync without touching the scene code. A clip that comes out too long first
+loses the silence at its ends, so only the speech itself is sped up. Lines whose natural
+length differs by more than 15 % are reported, since stronger stretching starts to sound
+unnatural; regenerate those with --speed so that the voice itself speaks faster or slower.
 
     export ELEVENLABS_API_KEY=...   # stored as an environment secret, never in the repo
     python scripts/generate_voiceover_elevenlabs.py --voice-id <id>
     python scripts/generate_voiceover_elevenlabs.py --voice-id <id> --project ../prime-numbers-video
+    python scripts/generate_voiceover_elevenlabs.py --voice-id <id> --only definition-2 --speed 1.2
 
 Requires ffmpeg and ffprobe on PATH. Only the standard library is used.
 """
@@ -46,7 +49,7 @@ def duration(path: pathlib.Path) -> float:
     return float(out.stdout.strip())
 
 
-def synthesize(text: str, voice_id: str, model: str, previous: str, following: str) -> bytes:
+def synthesize(text: str, voice_id: str, model: str, previous: str, following: str, speed: float) -> bytes:
     body = {
         "text": text,
         "model_id": model,
@@ -54,7 +57,7 @@ def synthesize(text: str, voice_id: str, model: str, previous: str, following: s
         # Neighbouring lines keep the intonation continuous across clips.
         "previous_text": previous,
         "next_text": following,
-        "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.2},
+        "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.2, "speed": speed},
     }
     request = urllib.request.Request(
         f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}?output_format=mp3_44100_128",
@@ -67,6 +70,16 @@ def synthesize(text: str, voice_id: str, model: str, previous: str, following: s
     )
     with urllib.request.urlopen(request, timeout=120) as response:
         return response.read()
+
+
+def trim_silence(source: pathlib.Path, target: pathlib.Path) -> None:
+    # Trim the start, reverse, trim the start again and reverse back: both ends lose their silence.
+    edge = "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.05"
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-y", "-i", str(source), "-af", f"{edge},areverse,{edge},areverse",
+         str(target)],
+        check=True,
+    )
 
 
 def atempo_chain(factor: float) -> str:
@@ -88,13 +101,17 @@ def main() -> None:
     parser.add_argument("--model", default="eleven_multilingual_v2")
     parser.add_argument("--project", default=HERE, type=pathlib.Path)
     parser.add_argument("--only", nargs="*", help="Generate only these line ids")
+    # A voice that speaks faster by itself sounds better than one sped up afterwards.
+    parser.add_argument("--speed", type=float, default=1.0, help="ElevenLabs speaking speed, 0.7–1.2")
     args = parser.parse_args()
 
     project = args.project.resolve()
     lines = json.loads((project / "scripts" / "narration.json").read_text(encoding="utf-8"))
     texts = [plain_text(line["text"]) for line in lines]
     out_dir = project / "public" / "voiceover"
-    report = {}
+    report_path = project / "scripts" / "elevenlabs-report.json"
+    # With --only, keep the entries of the lines that are not regenerated.
+    report = json.loads(report_path.read_text(encoding="utf-8")) if args.only and report_path.exists() else {}
 
     with tempfile.TemporaryDirectory() as tmp:
         for i, line in enumerate(lines):
@@ -107,13 +124,22 @@ def main() -> None:
                 synthesize(
                     texts[i], args.voice_id, args.model,
                     texts[i - 1] if i > 0 else "", texts[i + 1] if i + 1 < len(texts) else "",
+                    args.speed,
                 )
             )
             new_length = duration(raw)
-            factor = new_length / old_length
+            if new_length > old_length:
+                # ElevenLabs ends clips with up to ~0.8 s of silence: cut it before speeding up the
+                # speech, and pad the end with silence rather than slow down if the cut is enough.
+                trimmed = raw.with_suffix(".wav")
+                trim_silence(raw, trimmed)
+                raw, new_length = trimmed, duration(trimmed)
+                factor = max(new_length / old_length, 1.0)
+            else:
+                factor = new_length / old_length
             subprocess.run(
                 ["ffmpeg", "-v", "error", "-y", "-i", str(raw),
-                 "-af", f"{atempo_chain(factor)},loudnorm=I=-16:TP=-1.5:LRA=11",
+                 "-af", f"{atempo_chain(factor)},loudnorm=I=-16:TP=-1.5:LRA=11,apad",
                  "-ar", "44100", "-ac", "1", "-b:a", "128k", "-t", f"{old_length:.3f}", str(target)],
                 check=True,
             )
@@ -122,9 +148,7 @@ def main() -> None:
             flag = "  <-- check" if abs(factor - 1) > 0.15 else ""
             print(f"{line['id']:18s} {new_length:6.2f}s -> {old_length:6.2f}s  x{factor:.3f}{flag}")
 
-    (project / "scripts" / "elevenlabs-report.json").write_text(
-        json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8"
-    )
+    report_path.write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":
