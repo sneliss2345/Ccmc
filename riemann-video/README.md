@@ -1,15 +1,17 @@
-# Remotion video
+# Гипотеза Римана — видео на Remotion
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Ролик ~4:55 (1920×1080, 30 fps) с русской озвучкой о гипотезе Римана. Композиция
+`RiemannVideo` собрана из 11 сцен (`src/scenes/`): простые числа и лестница π(x), статья
+1859 года, дзета-функция и произведение Эйлера, комплексная плоскость, нули и сама гипотеза,
+прогулка по критической прямой, явная формула Римана, что проверено, почему гипотезу до
+сих пор не доказали, и финал.
 
-Welcome to your Remotion project!
+- `scripts/compute_data.py` — точные данные через mpmath: первые 100 нулей, ζ(½ + it) и Z(t),
+  явная формула для π(x), цветная карта ζ(s) (`public/zeta-domain.png`).
+- `scripts/narration.json` — текст озвучки (ударения отмечены знаком U+0301, сложные слова —
+  фонемами в `[[ ]]`); `scripts/generate_voiceover.py` синтезирует его офлайн голосом Piper
+  `ru_RU-irina-medium` через `piper-tts` в `public/voiceover/`.
+- `src/components/Tex.tsx` — формулы KaTeX.
 
 ## Commands
 
@@ -28,7 +30,7 @@ npm run dev
 **Render video**
 
 ```console
-npx remotion render
+npx remotion render RiemannVideo out/riemann-video.mp4
 ```
 
 **Upgrade Remotion**
