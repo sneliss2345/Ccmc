@@ -1,0 +1,182 @@
+{
+ "intro-1": {
+  "natural": 0.96,
+  "fitted_to": 1.18,
+  "stretch": 1.0
+ },
+ "intro-2": {
+  "natural": 4.13,
+  "fitted_to": 4.08,
+  "stretch": 1.013
+ },
+ "definition-1": {
+  "natural": 6.91,
+  "fitted_to": 6.5,
+  "stretch": 1.062
+ },
+ "definition-2": {
+  "natural": 4.02,
+  "fitted_to": 4.18,
+  "stretch": 1.0
+ },
+ "definition-3": {
+  "natural": 5.56,
+  "fitted_to": 5.17,
+  "stretch": 1.076
+ },
+ "sieve-1": {
+  "natural": 6.11,
+  "fitted_to": 7.16,
+  "stretch": 0.854
+ },
+ "sieve-2": {
+  "natural": 4.02,
+  "fitted_to": 4.21,
+  "stretch": 0.957
+ },
+ "sieve-3": {
+  "natural": 4.74,
+  "fitted_to": 4.34,
+  "stretch": 1.092
+ },
+ "sieve-4": {
+  "natural": 4.78,
+  "fitted_to": 4.91,
+  "stretch": 0.973
+ },
+ "sieve-5": {
+  "natural": 2.27,
+  "fitted_to": 2.35,
+  "stretch": 0.967
+ },
+ "sieve-6": {
+  "natural": 2.16,
+  "fitted_to": 2.61,
+  "stretch": 1.0
+ },
+ "sieve-7": {
+  "natural": 6.77,
+  "fitted_to": 6.79,
+  "stretch": 0.996
+ },
+ "factorization-1": {
+  "natural": 8.07,
+  "fitted_to": 7.86,
+  "stretch": 1.027
+ },
+ "factorization-2": {
+  "natural": 2.25,
+  "fitted_to": 2.61,
+  "stretch": 1.0
+ },
+ "factorization-3": {
+  "natural": 2.4,
+  "fitted_to": 2.22,
+  "stretch": 1.082
+ },
+ "factorization-4": {
+  "natural": 5.02,
+  "fitted_to": 5.22,
+  "stretch": 0.96
+ },
+ "euclid-1": {
+  "natural": 4.69,
+  "fitted_to": 4.44,
+  "stretch": 1.055
+ },
+ "euclid-2": {
+  "natural": 3.0,
+  "fitted_to": 3.06,
+  "stretch": 0.983
+ },
+ "euclid-3": {
+  "natural": 2.13,
+  "fitted_to": 2.48,
+  "stretch": 1.0
+ },
+ "euclid-4": {
+  "natural": 4.68,
+  "fitted_to": 4.75,
+  "stretch": 0.984
+ },
+ "euclid-5": {
+  "natural": 4.83,
+  "fitted_to": 5.04,
+  "stretch": 1.0
+ },
+ "euclid-6": {
+  "natural": 5.85,
+  "fitted_to": 5.67,
+  "stretch": 1.032
+ },
+ "distribution-1": {
+  "natural": 4.36,
+  "fitted_to": 3.92,
+  "stretch": 1.113
+ },
+ "distribution-2": {
+  "natural": 4.13,
+  "fitted_to": 4.34,
+  "stretch": 0.952
+ },
+ "distribution-3": {
+  "natural": 5.16,
+  "fitted_to": 4.57,
+  "stretch": 1.13
+ },
+ "distribution-4": {
+  "natural": 6.04,
+  "fitted_to": 5.38,
+  "stretch": 1.123
+ },
+ "distribution-5": {
+  "natural": 6.27,
+  "fitted_to": 5.75,
+  "stretch": 1.091
+ },
+ "cryptography-1": {
+  "natural": 3.79,
+  "fitted_to": 3.68,
+  "stretch": 1.03
+ },
+ "cryptography-2": {
+  "natural": 6.45,
+  "fitted_to": 6.37,
+  "stretch": 1.012
+ },
+ "cryptography-3": {
+  "natural": 4.78,
+  "fitted_to": 4.52,
+  "stretch": 1.058
+ },
+ "cryptography-4": {
+  "natural": 5.36,
+  "fitted_to": 5.36,
+  "stretch": 1.001
+ },
+ "open-problems-1": {
+  "natural": 3.24,
+  "fitted_to": 2.87,
+  "stretch": 1.127
+ },
+ "open-problems-2": {
+  "natural": 6.22,
+  "fitted_to": 6.19,
+  "stretch": 1.004
+ },
+ "open-problems-3": {
+  "natural": 5.75,
+  "fitted_to": 5.69,
+  "stretch": 1.009
+ },
+ "open-problems-4": {
+  "natural": 6.16,
+  "fitted_to": 5.98,
+  "stretch": 1.031
+ },
+ "outro-1": {
+  "natural": 4.31,
+  "fitted_to": 4.44,
+  "stretch": 0.971
+ }
+}

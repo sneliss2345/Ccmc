@@ -1,0 +1,182 @@
+{
+ "intro-1": {
+  "natural": 1.16,
+  "fitted_to": 1.23,
+  "stretch": 1.0
+ },
+ "intro-2": {
+  "natural": 4.25,
+  "fitted_to": 4.05,
+  "stretch": 1.05
+ },
+ "definition-1": {
+  "natural": 6.56,
+  "fitted_to": 6.5,
+  "stretch": 1.009
+ },
+ "definition-2": {
+  "natural": 4.04,
+  "fitted_to": 4.1,
+  "stretch": 1.0
+ },
+ "definition-3": {
+  "natural": 5.93,
+  "fitted_to": 5.17,
+  "stretch": 1.147
+ },
+ "sieve-1": {
+  "natural": 7.06,
+  "fitted_to": 7.11,
+  "stretch": 0.993
+ },
+ "sieve-2": {
+  "natural": 4.11,
+  "fitted_to": 4.15,
+  "stretch": 1.0
+ },
+ "sieve-3": {
+  "natural": 4.44,
+  "fitted_to": 4.31,
+  "stretch": 1.029
+ },
+ "sieve-4": {
+  "natural": 4.84,
+  "fitted_to": 4.88,
+  "stretch": 0.99
+ },
+ "sieve-5": {
+  "natural": 2.49,
+  "fitted_to": 2.38,
+  "stretch": 1.046
+ },
+ "sieve-6": {
+  "natural": 2.55,
+  "fitted_to": 2.64,
+  "stretch": 1.0
+ },
+ "sieve-7": {
+  "natural": 7.02,
+  "fitted_to": 6.79,
+  "stretch": 1.034
+ },
+ "factorization-1": {
+  "natural": 8.54,
+  "fitted_to": 7.81,
+  "stretch": 1.093
+ },
+ "factorization-2": {
+  "natural": 2.77,
+  "fitted_to": 2.66,
+  "stretch": 1.041
+ },
+ "factorization-3": {
+  "natural": 2.28,
+  "fitted_to": 2.25,
+  "stretch": 1.015
+ },
+ "factorization-4": {
+  "natural": 5.06,
+  "fitted_to": 5.2,
+  "stretch": 1.0
+ },
+ "euclid-1": {
+  "natural": 4.32,
+  "fitted_to": 4.41,
+  "stretch": 1.0
+ },
+ "euclid-2": {
+  "natural": 3.03,
+  "fitted_to": 2.95,
+  "stretch": 1.027
+ },
+ "euclid-3": {
+  "natural": 2.82,
+  "fitted_to": 2.53,
+  "stretch": 1.114
+ },
+ "euclid-4": {
+  "natural": 4.7,
+  "fitted_to": 4.7,
+  "stretch": 0.999
+ },
+ "euclid-5": {
+  "natural": 5.63,
+  "fitted_to": 4.99,
+  "stretch": 1.129
+ },
+ "euclid-6": {
+  "natural": 6.03,
+  "fitted_to": 5.64,
+  "stretch": 1.069
+ },
+ "distribution-1": {
+  "natural": 4.37,
+  "fitted_to": 3.92,
+  "stretch": 1.115
+ },
+ "distribution-2": {
+  "natural": 4.4,
+  "fitted_to": 4.36,
+  "stretch": 1.009
+ },
+ "distribution-3": {
+  "natural": 4.56,
+  "fitted_to": 4.6,
+  "stretch": 1.0
+ },
+ "distribution-4": {
+  "natural": 6.14,
+  "fitted_to": 5.38,
+  "stretch": 1.141
+ },
+ "distribution-5": {
+  "natural": 6.03,
+  "fitted_to": 5.69,
+  "stretch": 1.059
+ },
+ "cryptography-1": {
+  "natural": 3.66,
+  "fitted_to": 3.66,
+  "stretch": 1.001
+ },
+ "cryptography-2": {
+  "natural": 7.2,
+  "fitted_to": 6.35,
+  "stretch": 1.134
+ },
+ "cryptography-3": {
+  "natural": 4.55,
+  "fitted_to": 4.52,
+  "stretch": 1.007
+ },
+ "cryptography-4": {
+  "natural": 5.34,
+  "fitted_to": 5.36,
+  "stretch": 1.0
+ },
+ "open-problems-1": {
+  "natural": 3.18,
+  "fitted_to": 2.87,
+  "stretch": 1.107
+ },
+ "open-problems-2": {
+  "natural": 6.39,
+  "fitted_to": 6.19,
+  "stretch": 1.032
+ },
+ "open-problems-3": {
+  "natural": 5.64,
+  "fitted_to": 5.69,
+  "stretch": 1.0
+ },
+ "open-problems-4": {
+  "natural": 5.53,
+  "fitted_to": 5.98,
+  "stretch": 0.925
+ },
+ "outro-1": {
+  "natural": 4.67,
+  "fitted_to": 4.44,
+  "stretch": 1.051
+ }
+}

@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignore the output video from Git but not videos you import into src/.
+out
+
+# Cached zeta values used by scripts/compute_data.py
+scripts/.zeta-grid.npy
+
+# Python bytecode from running the scripts
+__pycache__/
