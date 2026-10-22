@@ -8,3 +8,6 @@ out
 
 # Cached zeta values used by scripts/compute_data.py
 scripts/.zeta-grid.npy
+
+# Python bytecode from running the scripts
+__pycache__/
