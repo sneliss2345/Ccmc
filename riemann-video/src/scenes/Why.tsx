@@ -21,12 +21,12 @@ const WhyInner = () => {
         <Audio
           name="why-3"
           src={staticFile("voiceover/why-3.mp3")}
-          from={22.1 * fps}
+          from={23.1 * fps}
         />
         <Audio
           name="why-4"
           src={staticFile("voiceover/why-4.mp3")}
-          from={30.1 * fps}
+          from={31.1 * fps}
         />
       </Track>
     </>

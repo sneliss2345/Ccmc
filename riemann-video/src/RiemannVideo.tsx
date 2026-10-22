@@ -13,7 +13,7 @@ import { Why } from "./scenes/Why";
 import { Zeros } from "./scenes/Zeros";
 import { Zeta } from "./scenes/Zeta";
 
-// 11 scenes with 10 fades of 15 frames: 8805 frames at 30 fps.
+// 11 scenes with 10 fades of 15 frames: 8850 frames at 30 fps.
 // Scene lengths follow the voiceover; see scripts/narration.json.
 export const RiemannVideo = () => {
   const { fps } = useVideoConfig();
@@ -83,14 +83,14 @@ export const RiemannVideo = () => {
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Why" durationInFrames={42.5 * fps}>
+      <TransitionSeries.Sequence name="Why" durationInFrames={43.5 * fps}>
         <Why style={{ backgroundColor: "#0b1020" }} />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: 15 })}
       />
-      <TransitionSeries.Sequence name="Finale" durationInFrames={21 * fps}>
+      <TransitionSeries.Sequence name="Finale" durationInFrames={21.5 * fps}>
         <Finale style={{ backgroundColor: "#0b1020" }} />
       </TransitionSeries.Sequence>
     </TransitionSeries>
