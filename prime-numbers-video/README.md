@@ -22,21 +22,24 @@
 Каждая сцена проигрывает свои фразы на дорожке «Voiceover», а появление элементов
 на экране привязано к моменту, когда о них говорят.
 
-Фразы озвучены ElevenLabs (голос Matilda `XrExE9yKIg1WjnnlVkGX`, модель
-`eleven_multilingual_v2`) скриптом `scripts/generate_voiceover_elevenlabs.py`. Он подгоняет
-каждую новую фразу под длину прежней, так что тайминги сцен не меняются, а в
-`scripts/elevenlabs-report.json` записывает, насколько фразу пришлось ускорить или замедлить.
-Если фраза растянута сильно, её лучше перегенерировать с `--speed`, чтобы голос сам говорил
-быстрее или медленнее:
+Фразы озвучены Yandex SpeechKit (голос `madirus`) скриптом
+`scripts/generate_voiceover_speechkit.py`. Он, как и `scripts/generate_voiceover_elevenlabs.py`,
+подгоняет каждую новую фразу под длину прежней, так что тайминги сцен не меняются, а в
+`scripts/speechkit-report.json` записывает, насколько фразу пришлось ускорить или замедлить.
+Если фраза растянута сильно (больше 15%), её лучше перегенерировать с `--speed`, чтобы голос
+сам говорил быстрее или медленнее:
 
 ```console
+export YANDEX_API_KEY=...
+python scripts/generate_voiceover_speechkit.py --voice madirus
+python scripts/generate_voiceover_speechkit.py --voice madirus --only definition-2 --speed 1.2
 export ELEVENLABS_API_KEY=...
 python scripts/generate_voiceover_elevenlabs.py --voice-id XrExE9yKIg1WjnnlVkGX
 python scripts/generate_voiceover_elevenlabs.py --voice-id XrExE9yKIg1WjnnlVkGX --only definition-2 --speed 1.2
 ```
 
 Тайминги заданы офлайн-голосом Piper `ru_RU-irina-medium` (sherpa-onnx, без API-ключей).
-После правки текста сначала пересоздайте фразы им, затем переозвучьте ElevenLabs:
+После правки текста сначала пересоздайте фразы им, затем переозвучьте SpeechKit или ElevenLabs:
 
 ```console
 pip install sherpa-onnx soundfile

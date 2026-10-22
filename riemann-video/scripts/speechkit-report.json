@@ -1,0 +1,187 @@
+{
+ "intro-1": {
+  "natural": 1.29,
+  "fitted_to": 1.31,
+  "stretch": 1.0
+ },
+ "intro-2": {
+  "natural": 6.58,
+  "fitted_to": 6.48,
+  "stretch": 1.015
+ },
+ "primes-1": {
+  "natural": 7.22,
+  "fitted_to": 7.42,
+  "stretch": 0.973
+ },
+ "primes-2": {
+  "natural": 6.78,
+  "fitted_to": 6.24,
+  "stretch": 1.087
+ },
+ "primes-3": {
+  "natural": 8.01,
+  "fitted_to": 7.31,
+  "stretch": 1.095
+ },
+ "primes-4": {
+  "natural": 6.34,
+  "fitted_to": 5.72,
+  "stretch": 1.108
+ },
+ "paper-1": {
+  "natural": 8.74,
+  "fitted_to": 8.72,
+  "stretch": 1.002
+ },
+ "paper-2": {
+  "natural": 7.17,
+  "fitted_to": 6.4,
+  "stretch": 1.12
+ },
+ "zeta-1": {
+  "natural": 12.77,
+  "fitted_to": 11.68,
+  "stretch": 1.094
+ },
+ "zeta-2": {
+  "natural": 8.78,
+  "fitted_to": 8.12,
+  "stretch": 1.081
+ },
+ "zeta-3": {
+  "natural": 13.56,
+  "fitted_to": 12.12,
+  "stretch": 1.119
+ },
+ "zeta-4": {
+  "natural": 4.93,
+  "fitted_to": 4.52,
+  "stretch": 1.091
+ },
+ "plane-1": {
+  "natural": 7.04,
+  "fitted_to": 7.42,
+  "stretch": 0.949
+ },
+ "plane-2": {
+  "natural": 8.62,
+  "fitted_to": 7.81,
+  "stretch": 1.104
+ },
+ "plane-3": {
+  "natural": 9.53,
+  "fitted_to": 9.74,
+  "stretch": 1.0
+ },
+ "plane-4": {
+  "natural": 6.28,
+  "fitted_to": 6.32,
+  "stretch": 0.993
+ },
+ "zeros-1": {
+  "natural": 7.73,
+  "fitted_to": 7.68,
+  "stretch": 1.006
+ },
+ "zeros-2": {
+  "natural": 6.87,
+  "fitted_to": 6.32,
+  "stretch": 1.088
+ },
+ "zeros-3": {
+  "natural": 8.1,
+  "fitted_to": 8.91,
+  "stretch": 0.909
+ },
+ "zeros-4": {
+  "natural": 7.53,
+  "fitted_to": 7.13,
+  "stretch": 1.056
+ },
+ "zeros-5": {
+  "natural": 6.89,
+  "fitted_to": 6.69,
+  "stretch": 1.03
+ },
+ "walk-1": {
+  "natural": 6.38,
+  "fitted_to": 6.53,
+  "stretch": 1.0
+ },
+ "walk-2": {
+  "natural": 8.92,
+  "fitted_to": 8.46,
+  "stretch": 1.054
+ },
+ "music-1": {
+  "natural": 5.13,
+  "fitted_to": 4.94,
+  "stretch": 1.04
+ },
+ "music-2": {
+  "natural": 4.94,
+  "fitted_to": 4.86,
+  "stretch": 1.017
+ },
+ "music-3": {
+  "natural": 5.89,
+  "fitted_to": 6.19,
+  "stretch": 0.952
+ },
+ "music-4": {
+  "natural": 5.72,
+  "fitted_to": 5.83,
+  "stretch": 0.982
+ },
+ "music-5": {
+  "natural": 9.28,
+  "fitted_to": 8.49,
+  "stretch": 1.093
+ },
+ "evidence-1": {
+  "natural": 6.18,
+  "fitted_to": 6.74,
+  "stretch": 0.918
+ },
+ "evidence-2": {
+  "natural": 6.53,
+  "fitted_to": 6.35,
+  "stretch": 1.029
+ },
+ "why-1": {
+  "natural": 8.98,
+  "fitted_to": 8.83,
+  "stretch": 1.017
+ },
+ "why-2": {
+  "natural": 13.51,
+  "fitted_to": 13.09,
+  "stretch": 1.032
+ },
+ "why-3": {
+  "natural": 6.86,
+  "fitted_to": 7.65,
+  "stretch": 0.896
+ },
+ "why-4": {
+  "natural": 10.77,
+  "fitted_to": 10.81,
+  "stretch": 1.0
+ },
+ "finale-1": {
+  "natural": 5.46,
+  "fitted_to": 5.41,
+  "stretch": 1.01
+ },
+ "finale-2": {
+  "natural": 6.56,
+  "fitted_to": 6.3,
+  "stretch": 1.042
+ },
+ "finale-3": {
+  "natural": 6.02,
+  "fitted_to": 6.01,
+  "stretch": 1.002
+ }
+}

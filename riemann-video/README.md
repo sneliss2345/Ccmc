@@ -11,9 +11,10 @@
 - `scripts/narration.json` — текст озвучки (ударения отмечены знаком U+0301, сложные слова —
   фонемами в `[[ ]]`); `scripts/generate_voiceover.py` синтезирует его офлайн голосом Piper
   `ru_RU-irina-medium` через `piper-tts` в `public/voiceover/` и этим задаёт тайминги сцен.
-- `scripts/generate_voiceover_elevenlabs.py` переозвучивает фразы ElevenLabs, подгоняя каждую под
-  длину прежней; в `public/voiceover/` сейчас голос Matilda (`XrExE9yKIg1WjnnlVkGX`,
-  `eleven_multilingual_v2`), растяжение по фразам — в `scripts/elevenlabs-report.json`.
+- `scripts/generate_voiceover_elevenlabs.py` и `scripts/generate_voiceover_speechkit.py`
+  переозвучивают фразы ElevenLabs или Yandex SpeechKit, подгоняя каждую под длину прежней;
+  в `public/voiceover/` сейчас голос SpeechKit `madirus`, растяжение по фразам — в
+  `scripts/speechkit-report.json` (фразы, растянутые больше чем на 15%, перегенерированы с `--speed`).
 - `src/components/Tex.tsx` — формулы KaTeX.
 
 ## Commands
