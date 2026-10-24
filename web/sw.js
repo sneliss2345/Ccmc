@@ -1,6 +1,9 @@
-// Offline cache for the installed web version of «Орбита».
-const CACHE = 'orbita-v1';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
+// Offline cache for the installed web version of «Звёздный рой».
+const CACHE = 'zvezdny-roy-v1';
+const CORE = [
+  './', './index.html', './orbita.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png',
+  './js/core.js', './js/data.js', './js/audio.js', './js/art.js', './js/game.js', './js/draw.js', './js/ui.js', './js/main.js',
+];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));

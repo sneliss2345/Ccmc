@@ -3,18 +3,31 @@ plugins {
 }
 
 android {
-    namespace 'com.orbita.game'
+    namespace 'com.zvezdnyroy.game'
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.orbita.game'
+        applicationId 'com.zvezdnyroy.game'
         minSdk 24
         targetSdk 35
         versionCode((project.findProperty('versionCode') ?: '1') as Integer)
         versionName(project.findProperty('versionName') ?: '1.0')
     }
 
+    // A fixed debug key keeps every CI build signed the same way, so new APKs install over old ones.
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
         }

@@ -1,4 +1,4 @@
-package com.orbita.game;
+package com.zvezdnyroy.game;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -19,7 +19,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-/** Full-screen WebView shell around the HTML5 game in assets/index.html. */
+/** Full-screen WebView shell around the HTML5 games in assets/ (index.html and orbita.html). */
 public class MainActivity extends Activity {
     private WebView web;
 
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         if (web != null) {
-            web.evaluateJavascript("window.__orbitaPause && window.__orbitaPause()", null);
+            web.evaluateJavascript("window.__appPause && window.__appPause()", null);
             web.onPause();
         }
         super.onPause();
@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
         super.onResume();
         if (web != null) {
             web.onResume();
-            web.evaluateJavascript("window.__orbitaResume && window.__orbitaResume()", null);
+            web.evaluateJavascript("window.__appResume && window.__appResume()", null);
         }
     }
 
@@ -109,8 +109,10 @@ public class MainActivity extends Activity {
             super.onBackPressed();
             return;
         }
-        web.evaluateJavascript("window.__orbitaBack ? window.__orbitaBack() : false", value -> {
-            if (!"true".equals(value)) finish();
+        web.evaluateJavascript("window.__appBack ? window.__appBack() : false", value -> {
+            if ("true".equals(value) || web == null) return;
+            if (web.canGoBack()) web.goBack();
+            else finish();
         });
     }
 
