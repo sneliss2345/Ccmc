@@ -1,0 +1,48 @@
+name: Android APK
+
+on:
+  push:
+    paths:
+      - 'web/**'
+      - 'android/**'
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew --no-daemon assembleDebug -PversionCode=${{ github.run_number }} -PversionName=1.0.${{ github.run_number }}
+
+      - name: Name the APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk orbita-1.0.${{ github.run_number }}.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: orbita-apk
+          path: orbita-*.apk
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Орбита 1.0.${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          files: orbita-*.apk
+          body: |
+            Скачай `orbita-1.0.${{ github.run_number }}.apk` прямо на телефон и открой файл.
+            Android спросит разрешение на установку из этого источника — разреши его для браузера или менеджера файлов.

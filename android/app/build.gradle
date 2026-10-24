@@ -1,0 +1,34 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.orbita.game'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.orbita.game'
+        minSdk 24
+        targetSdk 35
+        versionCode((project.findProperty('versionCode') ?: '1') as Integer)
+        versionName(project.findProperty('versionName') ?: '1.0')
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    // The game itself lives in /web and is shipped as-is inside the APK.
+    sourceSets {
+        main {
+            assets.srcDirs = ['../../web']
+        }
+    }
+}
